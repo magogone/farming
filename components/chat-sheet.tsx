@@ -45,7 +45,7 @@ export function ChatSheet() {
         <Button
           variant="secondary"
           size="icon"
-          className="fixed bottom-24 right-4 z-10 h-14 w-14 rounded-full shadow-lg bg-gradient-to-br from-gradient-start/70 to-gradient-mid/70 border-0"
+          className="fixed bottom-24 right-4 z-30 h-14 w-14 rounded-full shadow-lg bg-gradient-to-br from-gradient-start/70 to-gradient-mid/70 border-0"
         >
           <MessageSquare className="h-6 w-6 text-white" />
         </Button>

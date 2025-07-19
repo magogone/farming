@@ -51,16 +51,6 @@ export default function FarmPage() {
       animate="visible"
     >
       <motion.div variants={itemVariants} className="mt-24 relative">
-        {/* 背景图层 */}
-        <div
-          className="absolute inset-0 rounded-lg bg-cover bg-no-repeat opacity-15 z-0"
-          style={{
-            backgroundImage: "url(/eth-isometric-bg.png)",
-            backgroundPosition: "center top",
-            transform: "translateY(-50px)",
-          }}
-        />
-
         {/* 关系图组件层 */}
         <div className="absolute inset-0 z-[2] flex items-center justify-center">
           <RelationChart className="opacity-40" />
