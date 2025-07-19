@@ -32,11 +32,11 @@ const TitleWithDecorations = ({ children }: { children: React.ReactNode }) => (
 export default function AccountPage() {
   return (
     <>
-      {/* 渐变背景 - 覆盖整个页面 */}
-      <div className="absolute top-0 left-0 right-0 h-screen bg-gradient-to-br from-gradient-start via-gradient-mid to-gradient-end z-[1]" />
+      {/* 渐变背景 - 覆盖整个页面和滚动内容 */}
+      <div className="fixed top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-gradient-start via-gradient-mid to-gradient-end z-[1]" />
 
       <motion.div
-        className="space-y-8 p-4 relative z-[2]"
+        className="space-y-8 p-4 relative z-[2] min-h-screen"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
