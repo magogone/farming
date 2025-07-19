@@ -90,7 +90,7 @@ export default function Header() {
                 onClick={disconnectWallet}
                 className="text-red-600 hover:text-red-700 hover:bg-red-50 cursor-pointer rounded-lg m-1"
               >
-                断开连接
+                Disconnect
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -121,10 +121,11 @@ export default function Header() {
 
           <AlertDialogHeader className="relative z-10 text-center space-y-3 pb-4">
             <AlertDialogTitle className="text-xl font-bold text-slate-600">
-              连接失败
+              Connection Failed
             </AlertDialogTitle>
             <AlertDialogDescription className="text-slate-600 text-base leading-relaxed">
-              无法连接到钱包，请检查钱包是否已安装并解锁
+              Unable to connect to wallet. Please check if your wallet is
+              installed and unlocked.
             </AlertDialogDescription>
           </AlertDialogHeader>
 
@@ -133,7 +134,7 @@ export default function Header() {
               onClick={() => setShowErrorDialog(false)}
               className="flex-1 bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white border-0 rounded-xl py-3 font-medium shadow-lg hover:shadow-xl transition-all duration-200"
             >
-              确定
+              OK
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

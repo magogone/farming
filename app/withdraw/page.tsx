@@ -69,12 +69,12 @@ export default function WithdrawPage() {
 
   const handleWithdraw = () => {
     if (!withdrawAmount || parseFloat(withdrawAmount) <= 0) {
-      setErrorMessage("请输入有效的提现金额");
+      setErrorMessage("Please enter a valid withdrawal amount");
       setShowErrorDialog(true);
       return;
     }
     if (parseFloat(withdrawAmount) > 5430) {
-      setErrorMessage("提现金额不能超过可用余额");
+      setErrorMessage("Withdrawal amount cannot exceed available balance");
       setShowErrorDialog(true);
       return;
     }
@@ -215,11 +215,11 @@ export default function WithdrawPage() {
       <StyledAlertDialog
         open={showConfirmDialog}
         onOpenChange={setShowConfirmDialog}
-        title="确认提现"
-        description={`您确定要提现 ${withdrawAmount} USDC 吗？此操作无法撤销。`}
+        title="Confirm Withdrawal"
+        description={`Are you sure you want to withdraw ${withdrawAmount} USDC? This action cannot be undone.`}
         type="confirm"
-        confirmText="确认提现"
-        cancelText="取消"
+        confirmText="Confirm Withdrawal"
+        cancelText="Cancel"
         onConfirm={confirmWithdraw}
       />
 
@@ -227,8 +227,8 @@ export default function WithdrawPage() {
       <StyledAlertDialog
         open={showSuccessDialog}
         onOpenChange={setShowSuccessDialog}
-        title="提现成功！"
-        description="您的提现申请已提交，资金将在1-3个工作日内到账。"
+        title="Withdrawal Successful!"
+        description="Your withdrawal request has been submitted. Funds will arrive within 1-3 business days."
         type="success"
       />
 
@@ -236,7 +236,7 @@ export default function WithdrawPage() {
       <StyledAlertDialog
         open={showErrorDialog}
         onOpenChange={setShowErrorDialog}
-        title="提示"
+        title="Notice"
         description={errorMessage}
         type="error"
       />

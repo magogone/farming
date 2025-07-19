@@ -83,7 +83,7 @@ export default function SwapPage() {
   // 执行兑换
   const handleExchange = async () => {
     if (!fromValue || parseFloat(fromValue) <= 0) {
-      setErrorMessage("请输入有效的兑换金额");
+      setErrorMessage("Please enter a valid exchange amount");
       setShowErrorDialog(true);
       return;
     }
@@ -105,11 +105,11 @@ export default function SwapPage() {
 
       setToValue(result);
       setExchangeResult(
-        `${fromValue} ${fromCurrency} 兑换为 ${result} ${toCurrency}`
+        `${fromValue} ${fromCurrency} exchanged to ${result} ${toCurrency}`
       );
       setShowSuccessDialog(true);
     } catch (error) {
-      setErrorMessage("兑换失败，请重试");
+      setErrorMessage("Exchange failed, please try again");
       setShowErrorDialog(true);
     } finally {
       setIsSwapping(false);
@@ -280,7 +280,7 @@ export default function SwapPage() {
       <StyledAlertDialog
         open={showSuccessDialog}
         onOpenChange={setShowSuccessDialog}
-        title="兑换成功！"
+        title="Exchange Successful!"
         description={exchangeResult}
         type="success"
       />
@@ -289,7 +289,7 @@ export default function SwapPage() {
       <StyledAlertDialog
         open={showErrorDialog}
         onOpenChange={setShowErrorDialog}
-        title="提示"
+        title="Notice"
         description={errorMessage}
         type="error"
       />

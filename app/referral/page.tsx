@@ -130,8 +130,8 @@ export default function ReferralPage() {
       <StyledAlertDialog
         open={showErrorDialog}
         onOpenChange={setShowErrorDialog}
-        title="提示"
-        description="复制失败，请手动复制链接"
+        title="Notice"
+        description="Copy failed, please copy the link manually"
         type="error"
       />
     </>

@@ -31,9 +31,12 @@ const TitleWithDecorations = ({ children }: { children: React.ReactNode }) => (
 
 export default function AccountPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gradient-start via-gradient-mid to-gradient-end">
+    <>
+      {/* 渐变背景 - 覆盖整个页面 */}
+      <div className="absolute top-0 left-0 right-0 h-screen bg-gradient-to-br from-gradient-start via-gradient-mid to-gradient-end z-[1]" />
+
       <motion.div
-        className="space-y-8 p-4"
+        className="space-y-8 p-4 relative z-[2]"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -136,6 +139,6 @@ export default function AccountPage() {
           </Card>
         </motion.div>
       </motion.div>
-    </div>
+    </>
   );
 }
