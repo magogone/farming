@@ -1,92 +1,243 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { StyledAlertDialog } from "@/components/ui/styled-alert-dialog";
+import React from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
 // import { Icons } from "@/components/icons" // Icons不再需要usdc定义
-import { containerVariants, itemVariants } from "@/components/animations"
+import { containerVariants, itemVariants } from "@/components/animations";
+import RelationChart from "@/components/relation-chart";
 
 const withdrawalHistory = [
-  { date: "2025-07-18", usdc: 1000, status: "Completed", remark: "OK" },
-  { date: "2025-07-15", usdc: 500, status: "Completed", remark: "OK" },
-  { date: "2025-07-12", usdc: 2500, status: "Pending", remark: "Processing" },
-]
+  {
+    date: "2025-07-18",
+    usdc: 1000,
+    status: "Completed",
+    remark: "Bank Transfer",
+  },
+  { date: "2025-07-15", usdc: 500, status: "Completed", remark: "PayPal" },
+  {
+    date: "2025-07-12",
+    usdc: 2500,
+    status: "Pending",
+    remark: "Wire Transfer",
+  },
+  {
+    date: "2025-07-10",
+    usdc: 750,
+    status: "Completed",
+    remark: "Crypto Wallet",
+  },
+  {
+    date: "2025-07-08",
+    usdc: 1200,
+    status: "Failed",
+    remark: "Invalid Account",
+  },
+  {
+    date: "2025-07-05",
+    usdc: 300,
+    status: "Completed",
+    remark: "Bank Transfer",
+  },
+];
 
 export default function WithdrawPage() {
+  const [withdrawAmount, setWithdrawAmount] = React.useState("");
+  const [showConfirmDialog, setShowConfirmDialog] = React.useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = React.useState(false);
+  const [showErrorDialog, setShowErrorDialog] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState("");
+
+  const handleWithdraw = () => {
+    if (!withdrawAmount || parseFloat(withdrawAmount) <= 0) {
+      setErrorMessage("请输入有效的提现金额");
+      setShowErrorDialog(true);
+      return;
+    }
+    if (parseFloat(withdrawAmount) > 5430) {
+      setErrorMessage("提现金额不能超过可用余额");
+      setShowErrorDialog(true);
+      return;
+    }
+    setShowConfirmDialog(true);
+  };
+
+  const confirmWithdraw = async () => {
+    setShowConfirmDialog(false);
+    // 模拟提现处理
+    setTimeout(() => {
+      setShowSuccessDialog(true);
+      setWithdrawAmount("");
+    }, 1000);
+  };
+
   return (
-    <motion.div className="space-y-8 p-4" variants={containerVariants} initial="hidden" animate="visible">
-      <motion.div variants={itemVariants}>
-        <Card className="bg-white/60 backdrop-blur-sm">
-          <CardHeader>
-            <CardTitle>Withdraw</CardTitle>
-            <CardDescription>Withdraw your USDC balance.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="text-center">
-              <p className="text-sm text-muted-foreground">Available Amount</p>
-              <p className="text-2xl font-bold">5,430.00 USDC</p>
+    <>
+      {/* 保持渐变背景 - 延伸到屏幕一半 */}
+      <div className="absolute top-0 left-0 right-0 h-[50vh] bg-gradient-to-br from-gradient-start via-gradient-mid to-gradient-end z-[1]" />
+
+      <motion.div
+        className="space-y-8 p-4 relative z-[2]"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div variants={itemVariants}>
+          <Card className="bg-white/60 backdrop-blur-sm relative overflow-hidden">
+            {/* 以太坊关系图装饰 - 右上角 */}
+            <div className="absolute -top-12 -right-12 w-48 h-48 opacity-40 z-0 transform rotate-45">
+              <RelationChart className="w-full h-full" />
             </div>
-            <div className="space-y-2">
-              <Label>Amount</Label>
-              <div className="relative">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  {/* 使用图片替换 Icons.usdc 组件 */}
-                  <img src="/images/usdc-logo.png" alt="USDC Logo" className="h-5 w-5 rounded-full" />
-                </div>
-                <Input type="number" placeholder="0" className="pl-10 rounded-xl border-0 bg-slate-100" />
+
+            <CardHeader className="relative z-10">
+              <CardTitle>Withdraw</CardTitle>
+              <CardDescription>Withdraw your USDC balance.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4 relative z-10">
+              <div className="text-center">
+                <p className="text-sm text-muted-foreground">
+                  Available Amount
+                </p>
+                <p className="text-2xl font-bold">5,430.00 USDC</p>
               </div>
-            </div>
-            <Button className="w-full rounded-full" size="lg">
-              Withdraw
-            </Button>
-          </CardContent>
-        </Card>
+              <div className="space-y-2">
+                <Label>Amount</Label>
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                    <img
+                      src="/images/usdc-logo.png"
+                      alt="USDC Logo"
+                      className="h-5 w-5 rounded-full"
+                    />
+                  </div>
+                  <Input
+                    type="number"
+                    placeholder="0"
+                    value={withdrawAmount}
+                    onChange={(e) => setWithdrawAmount(e.target.value)}
+                    className="pl-10 pr-10 rounded-xl border-0 bg-white/90 backdrop-blur-sm shadow-sm focus:shadow-md transition-all duration-200 text-slate-800 text-center"
+                  />
+                </div>
+              </div>
+              <Button
+                onClick={handleWithdraw}
+                className="w-full rounded-xl bg-gradient-to-br from-gradient-start to-gradient-mid hover:opacity-80 shadow-lg hover:shadow-xl transition-all duration-200 border-0"
+                size="lg"
+              >
+                Withdraw
+              </Button>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <motion.div variants={itemVariants}>
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg font-bold text-blue-600 text-center">
+                Withdrawal History
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="px-2">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="text-xs font-medium px-2 py-2 whitespace-nowrap">
+                      Date (UTC)
+                    </TableHead>
+                    <TableHead className="text-xs font-medium px-2 py-2 text-center whitespace-nowrap">
+                      USDC
+                    </TableHead>
+                    <TableHead className="text-xs font-medium px-2 py-2 text-center whitespace-nowrap">
+                      Status
+                    </TableHead>
+                    <TableHead className="text-xs font-medium px-2 py-2 text-center whitespace-nowrap">
+                      Remark
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {withdrawalHistory.map((item, index) => (
+                    <TableRow key={index} className="border-b border-gray-100">
+                      <TableCell className="text-xs px-2 py-2 font-medium whitespace-nowrap">
+                        {item.date}
+                      </TableCell>
+                      <TableCell className="text-xs px-2 py-2 text-center font-mono whitespace-nowrap">
+                        {item.usdc.toLocaleString()}
+                      </TableCell>
+                      <TableCell className="text-xs px-2 py-2 text-center whitespace-nowrap">
+                        <Badge
+                          variant="secondary"
+                          className={`text-xs px-2 py-1 whitespace-nowrap ${
+                            item.status === "Completed"
+                              ? "bg-green-50 text-green-600 border-green-200"
+                              : item.status === "Pending"
+                              ? "bg-yellow-50 text-yellow-600 border-yellow-200"
+                              : "bg-blue-50 text-blue-600 border-blue-200"
+                          }`}
+                        >
+                          {item.status}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-xs px-2 py-2 text-center text-muted-foreground whitespace-nowrap">
+                        {item.remark}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </motion.div>
       </motion.div>
 
-      <motion.div variants={itemVariants}>
-        <Card>
-          <CardHeader>
-            <CardTitle>Withdrawal History</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Date</TableHead>
-                  <TableHead>USDC</TableHead>
-                  <TableHead>Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {withdrawalHistory.map((item) => (
-                  <TableRow key={item.date}>
-                    <TableCell>{item.date}</TableCell>
-                    <TableCell className="font-mono">{item.usdc.toFixed(2)}</TableCell>
-                    <TableCell>
-                      <Badge
-                        variant={
-                          item.status === "Completed"
-                            ? "default"
-                            : item.status === "Pending"
-                              ? "secondary"
-                              : "destructive"
-                        }
-                        className="bg-green-100 text-green-800"
-                      >
-                        {item.status}
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-      </motion.div>
-    </motion.div>
-  )
+      {/* 提现确认对话框 */}
+      <StyledAlertDialog
+        open={showConfirmDialog}
+        onOpenChange={setShowConfirmDialog}
+        title="确认提现"
+        description={`您确定要提现 ${withdrawAmount} USDC 吗？此操作无法撤销。`}
+        type="confirm"
+        confirmText="确认提现"
+        cancelText="取消"
+        onConfirm={confirmWithdraw}
+      />
+
+      {/* 提现成功对话框 */}
+      <StyledAlertDialog
+        open={showSuccessDialog}
+        onOpenChange={setShowSuccessDialog}
+        title="提现成功！"
+        description="您的提现申请已提交，资金将在1-3个工作日内到账。"
+        type="success"
+      />
+
+      {/* 错误提示对话框 */}
+      <StyledAlertDialog
+        open={showErrorDialog}
+        onOpenChange={setShowErrorDialog}
+        title="提示"
+        description={errorMessage}
+        type="error"
+      />
+    </>
+  );
 }
