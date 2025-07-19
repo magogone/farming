@@ -19,7 +19,7 @@ export default function RelationChart({ className = "" }: RelationChartProps) {
         <img
           src="/relation-chart.png"
           alt="关系图组件"
-          className="w-[80%] h-auto object-contain blur-[1px]"
+          className="w-[80%] h-auto object-contain"
         />
       </div>
     </motion.div>

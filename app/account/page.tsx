@@ -43,7 +43,7 @@ export default function AccountPage() {
           <div className="mt-4 grid grid-cols-2 gap-4">
             <Card className="bg-white/60 backdrop-blur-sm">
               <CardContent className="flex flex-col items-center justify-center gap-2 p-4">
-                <p className="text-2xl font-bold text-slate-800">0.00</p>
+                <p className="text-2xl font-bold text-slate-600">0.00</p>
                 <div className="flex items-center gap-2">
                   <img
                     src="/images/eth-logo.png"
@@ -56,7 +56,7 @@ export default function AccountPage() {
             </Card>
             <Card className="bg-white/60 backdrop-blur-sm">
               <CardContent className="flex flex-col items-center justify-center gap-2 p-4">
-                <p className="text-2xl font-bold text-slate-800">0.00</p>
+                <p className="text-2xl font-bold text-slate-600">0.00</p>
                 <div className="flex items-center gap-2">
                   <img
                     src="/images/usdc-logo.png"
@@ -86,7 +86,7 @@ export default function AccountPage() {
                       <span className="font-bold text-blue-600">
                         {numberPart}
                       </span>
-                      <span className="ml-1 text-slate-800">{unitPart}</span>
+                      <span className="ml-1 text-slate-600">{unitPart}</span>
                     </div>
                   </div>
                 );

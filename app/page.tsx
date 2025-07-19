@@ -63,12 +63,12 @@ export default function FarmPage() {
 
         {/* 关系图组件层 */}
         <div className="absolute inset-0 z-[2] flex items-center justify-center">
-          <RelationChart className="opacity-15" />
+          <RelationChart className="opacity-40" />
         </div>
 
         {/* 内容层 */}
         <div className="relative z-10">
-          <Card className="bg-white/60 text-center backdrop-blur-sm border-0 shadow-lg">
+          <Card className="bg-white/30 text-center backdrop-blur-sm border-0 shadow-lg">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-blue-600">
                 Liquidity Farming
@@ -200,7 +200,7 @@ export default function FarmPage() {
       </motion.div>
 
       <motion.div variants={itemVariants}>
-        <h2 className="px-2 text-lg font-bold text-slate-700">FAQ</h2>
+        <h2 className="px-2 text-lg font-bold text-slate-600">FAQ</h2>
         <Card className="mt-2">
           <CardContent className="p-2">
             <Accordion type="single" collapsible>

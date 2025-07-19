@@ -161,7 +161,7 @@ export default function SwapPage() {
                     placeholder="0"
                     value={fromValue}
                     onChange={(e) => setFromValue(e.target.value)}
-                    className="pl-10 pr-16 rounded-xl border-0 bg-white/90 text-slate-800 h-12 text-center"
+                    className="pl-10 pr-16 rounded-xl border-0 bg-white/90 text-slate-600 h-12 text-center"
                   />
                   <Button
                     variant="ghost"
@@ -213,7 +213,7 @@ export default function SwapPage() {
                     placeholder="0"
                     value={toValue}
                     onChange={(e) => setToValue(e.target.value)}
-                    className="pl-10 pr-16 rounded-xl border-0 bg-white/90 text-slate-800 h-12 text-center"
+                    className="pl-10 pr-16 rounded-xl border-0 bg-white/90 text-slate-600 h-12 text-center"
                     readOnly
                   />
                 </div>

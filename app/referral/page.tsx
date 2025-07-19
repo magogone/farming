@@ -70,7 +70,7 @@ export default function ReferralPage() {
                 <Input
                   readOnly
                   value={referralLink}
-                  className="font-mono rounded-xl border-0 bg-white text-slate-800"
+                  className="font-mono rounded-xl border-0 bg-white text-slate-600"
                 />
                 <Button
                   variant="ghost"

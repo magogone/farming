@@ -57,7 +57,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-20 flex h-20 items-center justify-between rounded-b-2xl bg-white/60 px-4 text-slate-800 shadow-sm backdrop-blur-lg">
+      <header className="sticky top-0 z-20 flex h-20 items-center justify-between rounded-b-2xl bg-white/60 px-4 text-slate-600 shadow-sm backdrop-blur-lg">
         <div className="flex items-center gap-3">
           <div className="rounded-full bg-white/50 p-2 shadow-md">
             {/* 使用图片替换 Icons.eth 组件 */}
@@ -120,7 +120,7 @@ export default function Header() {
           </div>
 
           <AlertDialogHeader className="relative z-10 text-center space-y-3 pb-4">
-            <AlertDialogTitle className="text-xl font-bold text-slate-800">
+            <AlertDialogTitle className="text-xl font-bold text-slate-600">
               连接失败
             </AlertDialogTitle>
             <AlertDialogDescription className="text-slate-600 text-base leading-relaxed">

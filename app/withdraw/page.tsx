@@ -109,7 +109,7 @@ export default function WithdrawPage() {
             </div>
 
             <CardHeader className="relative z-10">
-              <CardTitle>Withdraw</CardTitle>
+              <CardTitle className="text-slate-600">Withdraw</CardTitle>
               <CardDescription>Withdraw your USDC balance.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4 relative z-10">
@@ -117,7 +117,9 @@ export default function WithdrawPage() {
                 <p className="text-sm text-muted-foreground">
                   Available Amount
                 </p>
-                <p className="text-2xl font-bold">5,430.00 USDC</p>
+                <p className="text-2xl font-bold text-slate-600">
+                  5,430.00 USDC
+                </p>
               </div>
               <div className="space-y-2">
                 <Label>Amount</Label>
@@ -134,7 +136,7 @@ export default function WithdrawPage() {
                     placeholder="0"
                     value={withdrawAmount}
                     onChange={(e) => setWithdrawAmount(e.target.value)}
-                    className="pl-10 pr-10 rounded-xl border-0 bg-white/90 backdrop-blur-sm shadow-sm focus:shadow-md transition-all duration-200 text-slate-800 text-center"
+                    className="pl-10 pr-10 rounded-xl border-0 bg-white/90 backdrop-blur-sm shadow-sm focus:shadow-md transition-all duration-200 text-slate-600 text-center"
                   />
                 </div>
               </div>
@@ -160,16 +162,16 @@ export default function WithdrawPage() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="text-xs font-medium px-2 py-2 whitespace-nowrap">
+                    <TableHead className="text-xs font-medium px-2 py-2 whitespace-nowrap text-slate-600">
                       Date (UTC)
                     </TableHead>
-                    <TableHead className="text-xs font-medium px-2 py-2 text-center whitespace-nowrap">
+                    <TableHead className="text-xs font-medium px-2 py-2 text-center whitespace-nowrap text-slate-600">
                       USDC
                     </TableHead>
-                    <TableHead className="text-xs font-medium px-2 py-2 text-center whitespace-nowrap">
+                    <TableHead className="text-xs font-medium px-2 py-2 text-center whitespace-nowrap text-slate-600">
                       Status
                     </TableHead>
-                    <TableHead className="text-xs font-medium px-2 py-2 text-center whitespace-nowrap">
+                    <TableHead className="text-xs font-medium px-2 py-2 text-center whitespace-nowrap text-slate-600">
                       Remark
                     </TableHead>
                   </TableRow>
@@ -177,10 +179,10 @@ export default function WithdrawPage() {
                 <TableBody>
                   {withdrawalHistory.map((item, index) => (
                     <TableRow key={index} className="border-b border-gray-100">
-                      <TableCell className="text-xs px-2 py-2 font-medium whitespace-nowrap">
+                      <TableCell className="text-xs px-2 py-2 font-medium whitespace-nowrap text-slate-600">
                         {item.date}
                       </TableCell>
-                      <TableCell className="text-xs px-2 py-2 text-center font-mono whitespace-nowrap">
+                      <TableCell className="text-xs px-2 py-2 text-center font-mono whitespace-nowrap text-slate-600">
                         {item.usdc.toLocaleString()}
                       </TableCell>
                       <TableCell className="text-xs px-2 py-2 text-center whitespace-nowrap">

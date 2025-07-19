@@ -65,7 +65,7 @@ export function StyledAlertDialog({
         </div>
 
         <AlertDialogHeader className="relative z-10 text-center space-y-3 pb-4">
-          <AlertDialogTitle className="text-xl font-bold text-slate-800">
+          <AlertDialogTitle className="text-xl font-bold text-slate-600">
             {title}
           </AlertDialogTitle>
           <AlertDialogDescription className="text-slate-600 text-base leading-relaxed">
@@ -77,7 +77,7 @@ export function StyledAlertDialog({
           {type === "confirm" && (
             <AlertDialogCancel
               onClick={handleCancel}
-              className="flex-1 rounded-xl border-0 bg-gray-100 hover:bg-gray-200 text-slate-700 py-3 px-4 font-medium shadow-sm hover:shadow-md transition-all duration-200"
+              className="flex-1 rounded-xl border-0 bg-gray-100 hover:bg-gray-200 text-slate-600 py-3 px-4 font-medium shadow-sm hover:shadow-md transition-all duration-200"
             >
               {cancelText}
             </AlertDialogCancel>
