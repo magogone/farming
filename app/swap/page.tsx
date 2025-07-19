@@ -145,7 +145,7 @@ export default function SwapPage() {
               <div className="space-y-1">
                 <Label className="text-white text-sm">From</Label>
                 <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 z-10">
                     <img
                       src={
                         fromCurrency === "ETH"
@@ -197,7 +197,7 @@ export default function SwapPage() {
               <div className="space-y-1" style={{ marginTop: "-16px" }}>
                 <Label className="text-white text-sm">To</Label>
                 <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 z-10">
                     <img
                       src={
                         toCurrency === "ETH"
